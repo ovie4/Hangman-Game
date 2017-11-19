@@ -1,7 +1,9 @@
 //game logic
 
 //press any key to get started
-
+var guessesLeft=10;
+var wins=0;
+var losses=0;
 
 var words = ["kaladin", "sanderson", "arya", "khaleesi"];
 
@@ -20,7 +22,7 @@ console.log("new array is " + wordString);
 var hiddenLetters = [];
 var hideWord = function() {
     for (var i = 0; i < wordString.length; i++) {
-        hiddenLetters.push("-");
+        hiddenLetters.push("_");
         console.log(hiddenLetters);
     }
 }
@@ -28,7 +30,7 @@ debugger;
 hideWord();
 //hide the words in html?
 console.log($("#hiddenWord"));
-//$("#hiddenWord").html("will this work");
+//$("#hiddenWord").html("");
 
 //$("#hiddenWord").innerHTML(hiddenLetters);
 
@@ -36,32 +38,43 @@ console.log($("#hiddenWord"));
 
 document.onkeyup = function(event) {
     var userKeyPress = event.key;
+    var foundIt = false;
     for (var i = 0; i < wordString.length; i++)
         if (userKeyPress === wordString[i]) {
-            alert("Well Done");
+            // alert("Well Done");
             //display wordString[i];
-            hiddenLetters[i] == wordString[i];
+            foundIt = true;
+            hiddenLetters[i] = userKeyPress;
            
         }
         
     else {
 
     	//make guesses--
-        alert("Miss");
+        // alert("Miss");
+        var guessesLeft = guessesLeft-1;
     }
+    if (foundIt){
+    	alert("You guessd a letter!")
+    }
+    document.getElementById("word").innerHTML = hiddenLetters.join(' ');
+    console.log(hiddenLetters);
 
 }
-console.log(hiddenLetters);
 
 
 
-//if a hit, display where
-//if not, guesses--
 
-//create a var wins = 0 and increment by 1
 
+
+
+//function to increase wins and increase losses
 //var playerWins= function(){
-//	wins++
+//	wins = wins++;
+//}
+
+//var playerLoss = function(){
+//	losses = losses++;
 //}
 
 
