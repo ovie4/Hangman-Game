@@ -1,0 +1,25 @@
+@font-face{
+	font-family: gameOfThrones;
+	src: url(GoT.ttf);
+}
+
+h1{
+	font-family: "gameOfThrones";
+	text-align: center;
+}
+
+#hiddenWord{
+	color:green;
+	
+
+}
+
+#hint{
+
+	border: 2px solid black;
+	height: 300px;
+}
+#word{
+	border: 2px solid black;
+	height: 300px;
+}

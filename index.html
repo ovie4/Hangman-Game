@@ -2,32 +2,57 @@
 <html>
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	 <script type="text/javascript" src="./assets/javascript/hangman.js"></script>
 	<title>Hangman Game</title>
 
 
 
 </head>
 <body>
+	<h1> # Hangman</h1>
 
 	<div class="container">
+		<div class="jumbotron">
+      
+      <div class="text-center">
+        <button class="btn btn-warning btn-xs theme-button"><span class="glyphicon glyphicon-music"></span> Play Theme!</button>
+        <button class="btn btn-default btn-xs pause-button"><span class="glyphicon glyphicon-pause"></span> Pause Song</button>
+      </div>
 		<!--divide the viewport into 3 sections-->
 
 
 		<div class="row">
 			<!--first side column-->
 			<div class="col-md-3">
+				<!--show corresponding hint-->
+				<div id="hint">Hint's here</div>
+
 				
 
 			</div>
 			<!--main column-->
 			<div class="col-md-6">
+				<!--create divs for each section of game-->
+				<div id="word">
+					<span id="hiddenWord">Let's get Started</span>
+					<br /><br /><br />
+					<p id=guessesLeft></p>
+				</div>
+				
+				
 
 
-				<script type="text/javascript" src="assets/javascript/hangman.js"></script>
+
+				
 			</div>
 
 			<!--right side column-->
 			<div class="col-md-3">
+				<div id="lettersGuessed">Letters Guessed: </div>
+				<div id="wins"></div>
+				<div id="losses"></div>
 				
 
 			</div>
