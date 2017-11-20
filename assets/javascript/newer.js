@@ -1,6 +1,6 @@
 //choose theme
 
-var word = "madonna
+var word = "madonna"
 
 //use key events for letters the players will type
 
@@ -62,6 +62,10 @@ for (var i = 0;i <wordArray.length, i++){
 
 
 
+var words{
+
+}
+
 
 
 //create variable for the word
@@ -74,3 +78,18 @@ $(document).ready(function({
 	$("word-one").append(<span>"_"</span);
 	}
 }))
+
+
+
+
+
+var word-hint{
+	kaladin: "stormblessed",
+	arya: "Young Stark",
+	khaleesi :"mother of dragons",
+	sanderson: "author",
+}
+ var key = "kaladin"
+ word-hint.key = stormblessed!!
+
+//use the relationship to display hint whenever word[i] is currentWord
