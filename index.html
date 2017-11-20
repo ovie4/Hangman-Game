@@ -14,6 +14,12 @@
 	<h1> # Hangman</h1>
 
 	<div class="container">
+		<div class="jumbotron">
+      
+      <div class="text-center">
+        <button class="btn btn-warning btn-xs theme-button"><span class="glyphicon glyphicon-music"></span> Play Theme!</button>
+        <button class="btn btn-default btn-xs pause-button"><span class="glyphicon glyphicon-pause"></span> Pause Song</button>
+      </div>
 		<!--divide the viewport into 3 sections-->
 
 
@@ -31,6 +37,8 @@
 				<!--create divs for each section of game-->
 				<div id="word">
 					<span id="hiddenWord">Let's get Started</span>
+					<br /><br /><br />
+					<p id=guessesLeft></p>
 				</div>
 				
 				
@@ -42,6 +50,9 @@
 
 			<!--right side column-->
 			<div class="col-md-3">
+				<div id="lettersGuessed">Letters Guessed: </div>
+				<div id="wins"></div>
+				<div id="losses"></div>
 				
 
 			</div>
