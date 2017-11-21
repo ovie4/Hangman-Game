@@ -26,7 +26,7 @@ var audioElement = document.createElement("audio");
    
    function gameStart(){
    	guessesLeft= 15;
-   	$("#guessesLeft").html("You have " + guessesLeft + " guesses left!")
+   	$("#guessesLeft").html("You have " + guessesLeft + " guesses left")
    	$("#lettersGuessed").html("Letters Guessed: ");
     //set function that hides word and displays it
     function hideWord() {
@@ -94,7 +94,7 @@ var audioElement = document.createElement("audio");
             $("#lettersGuessed").append(" " + userKeyPress);
             var foundIt = false;
             guessesLeft = guessesLeft - 1;
-            document.getElementById("guessesLeft").innerHTML = "You have " + guessesLeft + " guesses left!";
+            document.getElementById("guessesLeft").innerHTML = "You have " + guessesLeft + " guesses left";
             
             for (var i = 0; i < wordString.length; i++) {
                 if (userKeyPress === wordString[i]) {
