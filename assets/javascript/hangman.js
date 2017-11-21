@@ -1,112 +1,105 @@
 //game logic
-    $(document).ready(function() {
-
-//press any key to get started
-
+$(document).ready(function() {
 var audioElement = document.createElement("audio");
-      audioElement.setAttribute("src", "./assets/GoTtheme.mp3");
+    audioElement.setAttribute("src", "./assets/GoTtheme.mp3");
 
-      // Theme Button
-      $(".theme-button").on("click", function() {
+    // Theme Button
+    $(".theme-button").on("click", function() {
         audioElement.play();
-      });
+    });
 
-      $(".pause-button").on("click", function() {
+    $(".pause-button").on("click", function() {
         audioElement.pause();
-      });
+});
+   var wins = 0;
+    var losses = 0;
+     var guessesLeft = 0;
+    var words = ["arya", "khaleesi", "daenarys", "bran", "stark"];
+   
+   function gameStart(){
+   	guessesLeft= 15;
+   	$("#guessesLeft").html("You have " + guessesLeft + " guesses left!")
+   	$("#lettersGuessed").html("Letters Guessed: ");
+    //set function that hides word and displays it
+    function hideWord() {
+        for (var i = 0; i < wordString.length; i++) {
+            hiddenLetters.push("_");
+            console.log(hiddenLetters);
+            document.getElementById("hiddenWord").innerHTML = hiddenLetters.join(' ');
+        }
+    }
 
+    //create function for a win/loss
+    function winCheck(wChecker) {
 
-var guessesLeft=10;
-var wins=0;
-var losses=0;
-console.log("You have "+guessesLeft+" guesses left");
+        if (wChecker.toString() === wordString.toString()) {
+            alert("Winter Came");
+            wins++;
+            
+            //document.getElementById("wins").innerHTML = "You have " + wins + " wins!";
+            $("#wins").html("Wins: "+wins);
+            gameStart();
+        }
+    }
 
-var words = ["kaladin", "sanderson", "arya", "khaleesi"];
+ 	function gameOver(lChecker){
+     	if (lChecker === 0) {
+            alert("You suck Joffrey!!");
+            losses = losses + 1;
+           $("#losses").html("Losses: "+losses);
+            
+            gameStart();
+        }
+    }
+    
+   
+    
+//game starts here
 
-//get a random word from array of options currentWord
+    //get a random word from array of options currentWord
+    var currentWord = words[Math.floor(Math.random() * words.length)];
+    console.log("current word is " + currentWord);
 
+    //separate currentWord into it's own array of letters
 
-var currentWord = words[Math.floor(Math.random() * words.length)]
-console.log("current word is " + currentWord);
+    var wordString = currentWord.split("");
+    console.log("new array is " + wordString);
 
-//separate currentWord into it's own array of letters
+    //create  function that creates a new empty array of -'s
+    var hiddenLetters = [];
+    hideWord();
 
+    //get user input with onkeyup and compare input with wordString letters
+    document.onkeyup = function(event) {
 
-var wordString = currentWord.split("");
-console.log("new array is " + wordString);
+        var userKeyPress = event.key;
+        userKeyPressCode = event.keyCode;
+        
+        if (userKeyPressCode >= 65 && userKeyPressCode <= 90) {
+            $("#lettersGuessed").append(" " + userKeyPress);
+            var foundIt = false;
+            guessesLeft = guessesLeft - 1;
+            document.getElementById("guessesLeft").innerHTML = "You have " + guessesLeft + " guesses left!";
+            
+            for (var i = 0; i < wordString.length; i++) {
+                if (userKeyPress === wordString[i]) {
+                    foundIt = true;
+                   
+                    hiddenLetters[i] = userKeyPress;
+                    document.getElementById("hiddenWord").innerHTML = hiddenLetters.join(' ');
+                                    
+                }
+                
+            }
+            	//check for wins
+                    winCheck(hiddenLetters);
+                    //check for loss
+                    gameOver(guessesLeft);
+        }
 
-//create  function that creates a new empty array of -'s
-var hiddenLetters = [];
-var hideWord = function() {
-    for (var i = 0; i < wordString.length; i++) {
-        hiddenLetters.push("_");
-        console.log(hiddenLetters);
-        document.getElementById("hiddenWord").innerHTML = hiddenLetters.join(' ');
     }
 }
 
-hideWord();
-
-
-
-//hide the words in html?
-console.log($("#hiddenWord"));
-//$("#hiddenWord").html("-");
-
-//get user input with onkeyup and compare input with wordString letters
-
-document.onkeyup = function(event) {
-    var userKeyPress = event.key;
-    $("#lettersGuessed").append(" "+userKeyPress);
-    var foundIt = false;
-    guessesLeft = guessesLeft-1;
-    	document.getElementById("guessesLeft").innerHTML = "You have "+guessesLeft+" guesses left!";
-    	console.log(guessesLeft);
-    for (var i = 0; i < wordString.length; i++){
-        if (userKeyPress === wordString[i]) {
-            foundIt = true;
-            alert("You guessed a letter!");
-            hiddenLetters[i] = userKeyPress;
-            document.getElementById("hiddenWord").innerHTML = hiddenLetters.join(' ');
-           
-        }
-        /*check if there are any more hidden letters and increase wins if not
-        for (var i = 0; i < hiddenLetters.length; i++) {
-        	if (hiddenLetters[i] != "-"){
-        		alert ("Winter Came");*/
-
-        	}
-        }
-        
-    
-    
-    
-
-
-
-//function to increase wins and increase losses
-
-if(guessesLeft===0){
-	alert("You suck Joffrey!!");
-	var losses = losses +1;
-	document.getElementById("losses").innerHTML = losses;
-	console.log("you have "+losses+" losses")
-}
-
-
-
-
-
-
-//get number of letters in word using .length
-//create for loop that creates as many dashes as there are letters
-
-/* for (var i = 0; i < word.length; i++){
-	
-	append a new space each time loop runs
-	$("#hiddenWord").append("<span>_</span>")
-
-}*/
-
+gameStart();
 
 })
