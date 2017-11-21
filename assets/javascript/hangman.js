@@ -15,6 +15,14 @@ var audioElement = document.createElement("audio");
     var losses = 0;
      var guessesLeft = 0;
     var words = ["arya", "khaleesi", "daenarys", "bran", "stark"];
+    var wordHint = {
+        arya: "Young,spunky Stark",
+        khaleesi: "Mother of Dragons",
+        daenarys: "Of House Targarean",
+        bran: "Third Eye On",
+        stark: "We watch for Winter",
+    }
+
    
    function gameStart(){
    	guessesLeft= 15;
@@ -24,7 +32,7 @@ var audioElement = document.createElement("audio");
     function hideWord() {
         for (var i = 0; i < wordString.length; i++) {
             hiddenLetters.push("_");
-            console.log(hiddenLetters);
+            
             document.getElementById("hiddenWord").innerHTML = hiddenLetters.join(' ');
         }
     }
@@ -57,8 +65,15 @@ var audioElement = document.createElement("audio");
 //game starts here
 
     //get a random word from array of options currentWord
-    var currentWord = words[Math.floor(Math.random() * words.length)];
+    var index = Math.floor(Math.random() * words.length);
+    var currentWord = words[index];
     console.log("current word is " + currentWord);
+
+    //get and display correct hint
+    var hint = wordHint[words[index]];
+    console.log(hint);
+    $("#hints").html(hint);
+
 
     //separate currentWord into it's own array of letters
 
