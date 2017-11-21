@@ -3,6 +3,16 @@
 	src: url(GoT.ttf);
 }
 
+body{
+	background: url(../images/gotpic2.jpg);
+}
+
+#container{
+	opacity: 0.3;
+}
+
+
+
 h1{
 	font-family: "gameOfThrones";
 	text-align: center;
@@ -14,12 +24,11 @@ h1{
 
 }
 
-#hint{
+#hint, #word, #results{
 
 	border: 2px solid black;
 	height: 300px;
 }
-#word{
-	border: 2px solid black;
-	height: 300px;
+#hint, #word, #wins, #lettersGuessed, #losses{
+	text-align: center;
 }
