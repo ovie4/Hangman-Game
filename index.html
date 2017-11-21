@@ -1,77 +1,60 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 <script type="text/javascript" src="./assets/javascript/hangman.js"></script>
-	<title>Hangman Game</title>
-
-
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/javascript/hangman.js"></script>
+    <title>Hangman Game</title>
 </head>
+
 <body>
-	<h1> # Hangman</h1>
-	<h4>Press Any Key To Start Guessing!</h4>
-
-	<div class="container">
-		<div class="jumbotron">
-      
-      <div class="text-center">
-        <button class="btn btn-warning btn-xs theme-button"><span class="glyphicon glyphicon-music"></span> Play Theme!</button>
-        <button class="btn btn-default btn-xs pause-button"><span class="glyphicon glyphicon-pause"></span> Pause Song</button>
-      </div>
-		<!--divide the viewport into 3 sections-->
-
-
-		<div class="row">
-			<!--first side column-->
-			<div class="col-md-3">
-				<!--show corresponding hint-->
-				<div>
-					<h3>Hints</h3>
-					<p id="hints"></p>
-				</div>
-
-				
-
-			</div>
-			<!--main column-->
-			<div class="col-md-6">
-				<!--create divs for each section of game-->
-				<div id="word">
-					<span id="hiddenWord">Let's get Started</span>
-					<br /><br /><br />
-					<p id=guessesLeft></p>
-				</div>
-				
-				
-
-
-
-				
-			</div>
-
-			<!--right side column-->
-			<div class="col-md-3">
-				<div id="results">
-					<p id="lettersGuessed"></p>
-					<p id="wins">Wins: </p>
-					<p id="losses">Losses: </p>
-				</div>
-
-			</div>
-
-	
-
-	</div>
-		</div>
-	</div>
-	<footer class="footer">
-      <div class="container">
-        <span>Copyright &#169 Ovie Omene 2017</span>
-      </div>
+    <h1> # Hangman</h1>
+    <h4>Press Any Key To Start Guessing!</h4>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="text-center">
+                <button class="btn btn-warning btn-xs theme-button"><span class="glyphicon glyphicon-music"></span> Play Theme!</button>
+                <button class="btn btn-default btn-xs pause-button"><span class="glyphicon glyphicon-pause"></span> Pause Song</button>
+            </div>
+            <!--divide the viewport into 3 sections-->
+            <div class="row">
+                <!--first side column-->
+                <div class="col-md-3">
+                    <!--show corresponding hint-->
+                    <div>
+                        <h3>Hints</h3>
+                        <p id="hints"></p>
+                    </div>
+                </div>
+                <!--main column-->
+                <div class="col-md-6">
+                    <!--create divs for each section of game-->
+                    <div id="word">
+                        <span id="hiddenWord">Let's get Started</span>
+                        <br />
+                        <br />
+                        <br />
+                        <p id=guessesLeft></p>
+                    </div>
+                </div>
+                <!--right side column-->
+                <div class="col-md-3">
+                    <div id="results">
+                        <p id="lettersGuessed"></p>
+                        <p id="wins">Wins: </p>
+                        <p id="losses">Losses: </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <span>Copyright &#169 Ovie Omene 2017</span>
+        </div>
     </footer>
-
 </body>
+
 </html>
