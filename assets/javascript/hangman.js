@@ -41,7 +41,7 @@ $(document).ready(function() {
         function winCheck(wChecker) {
 
             if (wChecker.toString() === wordString.toString()) {
-                alert("Winter Came");
+                alert("Congratulations!Winter Came!!");
                 wins++;
 
                 //document.getElementById("wins").innerHTML = "You have " + wins + " wins!";
@@ -83,7 +83,7 @@ $(document).ready(function() {
         //create  function that creates a new empty array of -'s
         var hiddenLetters = [];
         hideWord();
-
+        var alreadyGuessed = [];
         //get user input with onkeyup and compare input with wordString letters
         document.onkeyup = function(event) {
 
@@ -91,25 +91,31 @@ $(document).ready(function() {
             userKeyPressCode = event.keyCode;
 
             if (userKeyPressCode >= 65 && userKeyPressCode <= 90) {
-                $("#lettersGuessed").append(" " + userKeyPress);
-                var foundIt = false;
-                guessesLeft = guessesLeft - 1;
-                document.getElementById("guessesLeft").innerHTML = "You have " + guessesLeft + " guesses left";
 
-                for (var i = 0; i < wordString.length; i++) {
-                    if (userKeyPress === wordString[i]) {
-                        foundIt = true;
-
-                        hiddenLetters[i] = userKeyPress;
-                        document.getElementById("hiddenWord").innerHTML = hiddenLetters.join(' ');
-
+                if (!alreadyGuessed.includes(userKeyPressCode)) {
+                    console.log(alreadyGuessed);
+                    $("#lettersGuessed").append(" " + userKeyPress);
+                    alreadyGuessed.push(userKeyPressCode);
+                    var foundIt = false;
+                    for (var i = 0; i < wordString.length; i++) {
+                        if (userKeyPress === wordString[i]) {
+                            foundIt = true;
+                            hiddenLetters[i] = userKeyPress;
+                            document.getElementById("hiddenWord").innerHTML = hiddenLetters.join(' ');
+                        }
+                    }
+                    if (foundIt === false) {
+                        guessesLeft = guessesLeft - 1;
+                        document.getElementById("guessesLeft").innerHTML = "You have " + guessesLeft + " guesses left";
                     }
 
+                    //check for wins
+                    winCheck(hiddenLetters);
+                    //check for loss
+                    gameOver(guessesLeft);
+                } else {
+                    alert("You already guessed that letter!");
                 }
-                //check for wins
-                winCheck(hiddenLetters);
-                //check for loss
-                gameOver(guessesLeft);
             }
 
         }
